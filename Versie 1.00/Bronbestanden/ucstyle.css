@@ -1,0 +1,170 @@
+
+* 
+{
+  box-sizing: border-box;
+}
+
+body 
+{    font-family: Arial, Helvetica, sans-serif;
+}
+       
+table 
+{    border-collapse: collapse;
+     width: 100%;
+}
+
+td, th 
+{    border: 1px solid #ddd;
+     padding: 8px;
+}
+
+th 
+{    padding-top: 12px;
+     padding-bottom: 12px;
+     background-color: orange;
+     color: white;
+}
+
+td:last-child, .button-column
+{    font-weight: bold;
+     text-align: center;
+     color: darkblue;
+}
+
+tr:nth-child(even)
+{    background-color: #f2f2f2;
+}
+
+tr:hover 
+{    background-color: #ddd;
+}
+
+table.verkoop th
+{    background-color: darkblue;
+     color: orange;
+}
+
+table.koop th
+{    background-color: lightblue;
+     color: black;
+}
+
+table.biedingen th
+{    background-color: white;
+     color: black;
+}
+
+table.contact th
+{    background-color: lightgray;
+     color: black;
+}
+
+table.details th
+{    background-color: gray;
+     color: white;
+     margin: 0;
+     padding: 0;
+}
+
+table.details, table.kopers td
+{    font-weight: normal;
+     text-align: left;
+     color: initial;
+     margin: 0;
+     padding: 0;
+}
+
+table.kopers th
+{    background-color: aqua;
+     color: darkblue;
+     height: 10px;
+}
+
+textarea
+{    min-width: 100%;
+}
+
+.accent
+{    border: 2px solid orange;
+}
+
+.btop
+{    border-top: 1px solid black;
+     padding-top: 2px;
+}
+
+.bbottom
+{    border-bottom: 1px solid black;
+     padding-bottom: 2px;
+}
+
+.kader
+{    border: 3px solid lightgray;
+     margin-top: 10px;
+}
+
+.cell-right
+{    text-align: right;
+}
+
+.cell-center
+{    text-align: center;
+}
+
+.cell-top
+{    vertical-align: top;
+}
+
+.cell-small
+{    padding-top: 0;
+     padding-bottom: 0;
+}
+
+.spacer-left
+{    margin-left: 10px;
+}
+
+.spacer-right
+{    margin-right: 10px;
+}
+
+.spacer-top
+{    margin-top: 10px;
+}
+
+.action-button
+{    margin-right: 5px;
+}
+
+.cancel-button, a:link, a:visited
+{    background-color: unset !important; 
+     color: unset !important; 
+     text-decoration: none;
+}
+
+.laag
+{    margin: 0;
+     padding: 0;
+}
+
+.small
+{    height: 24px;
+     margin: 0;
+     padding: 0;
+     line-height: 1;
+}
+
+.big-checkbox 
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+}
+
+input[type="checkbox"][readonly] 
+{
+  pointer-events: none;
+  tabindex: -1;
+}
