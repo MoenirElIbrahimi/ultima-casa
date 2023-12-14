@@ -3,7 +3,7 @@
      if (isset($_GET["NOAccount"]))
      {    $noaccount = "<h4 class='accent'><br>Onjuiste E-mail/Wachtwoord combinatie.<br><br></h4>";
      }
-echo '
+?>
 <!DOCTYPE html>
 <html lang="nl">
      <head>
@@ -18,9 +18,9 @@ echo '
      <body>
           <div class="container">
                <div class="col-sm-4 col-md-6 col-lg-4 col-sm-offset-4 col-md-offset-3 col-lg-offset-4">
-                    <h3>Inloggen bij Ultima Casa</h3>' . 
-                    $noaccount . 
-                   '<form action="inloggen.php" method="GET">
+                    <h3>Inloggen bij Ultima Casa</h3>
+                    <?php echo $noaccount ?>
+                    <form action="inloggen.php" method="GET">
                          <div class="form-group">
                               <label for="Email">E-mailadres:</label>
                               <input type="email" class="form-control" id="Email" name="Email" placeholder="E-mailadres" required>
@@ -41,5 +41,5 @@ echo '
                </div> 
           </div>
      </body>
-</html>';
-?>
+</html>
+?
