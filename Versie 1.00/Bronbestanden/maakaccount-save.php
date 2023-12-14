@@ -8,11 +8,12 @@
      $telefoon = $_GET['Telefoon'];
      $wachtwoord = $_GET['Wachtwoord'];
      
-     $sql = "INSERT INTO relaties (Naam, Email, Telefoon, Wachtwoord)
+     $sql = "INSERT INTO relaties (Naam, Email, Telefoon, Wachtwoord, FKrollenID)
                   VALUES ('" . $naam . "', '" . 
                                $email . "', '" .
                                $telefoon . "', '" . 
-                               md5($wachtwoord) . "')";
+                               md5($wachtwoord) . "', '" . 
+                               10 . "')";
      
      if ($db->query($sql) == true) 
      {    if (StuurMail($email, 
