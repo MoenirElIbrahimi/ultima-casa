@@ -1,7 +1,7 @@
 <?php
 
 include_once("functions.php");
-
+session_start();
 // Controleer of de vereiste variabelen zijn ingesteld
 if (isset($_POST["Email"]) && isset($_POST["Wachtwoord"])) {
     $email = $_POST["Email"];
@@ -19,9 +19,11 @@ if (isset($_POST["Email"]) && isset($_POST["Wachtwoord"])) {
 
     $inlog = $db->query($sql)->fetch();
 
+    $_SESSION['rolID'] = $inlog['RID'];
+
     $redirect_url = 'index.php?NOAccount';
     if ($inlog) {
-        $redirect_url = $inlog['Landingspagina'] . '?RID=' . $inlog['RID'];
+        $redirect_url = $inlog['Landingspagina'];
     }
 
     echo '<META HTTP-EQUIV=REFRESH CONTENT="1; ' . $redirect_url . '">';

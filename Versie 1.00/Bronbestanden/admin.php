@@ -1,10 +1,28 @@
 <?php
-
+     session_start();
      include_once("functions.php");
      
+     $relatieid = $_SESSION['rolID'];
+     if (!isset($relatieid)) {
+          echo "niet ingelogd";
+          echo $_SESSION['rolID'];
+          //header("Location: index.php");
+     }
+
      $db = ConnectDB();
+
+     function checkAdminRights($db, $relatieid)
+     {
+    $sql = "SELECT relaties.ID, relaties.Naam, Email, Telefoon, rollen.Omschrijving
+            FROM relaties
+            LEFT JOIN rollen ON rollen.ID = relaties.FKrollenID
+            WHERE relaties.ID = $relatieid";
+
+    $relatie = $db->query($sql)->fetch();
+
+    return ($relatie && $relatie['Omschrijving'] == 'Administrator');
+     }
      
-     $relatieid = $_GET['RID'];
      $sql = "   SELECT ID, 
                        Naam, 
                        Email, 
@@ -13,6 +31,13 @@
                  WHERE ID = " . $relatieid;
      
      $gegevens = $db->query($sql)->fetch();
+
+     if ($admincheck = checkAdminRights($db, $relatieid)) {
+          $_SESSION['rol'] = "admin";
+     } else {
+          $_SESSION['message'] = "niet voldoende rechten";
+          header("Location: index.php");
+     }
      
      echo 
     '<!DOCTYPE html>
