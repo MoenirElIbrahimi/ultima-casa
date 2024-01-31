@@ -1,6 +1,5 @@
 <?php
 include_once("functions.php");
-
 $db = ConnectDB();
 
 $naam = $_POST['Naam'];
@@ -40,3 +39,4 @@ if ($db->query($sql) == true) {
 echo $result . '<br><br>
       <button class="action-button"><a href="index.html">Ok</a></button>';
 ?>
+
