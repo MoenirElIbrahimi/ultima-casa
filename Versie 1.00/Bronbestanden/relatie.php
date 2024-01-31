@@ -35,28 +35,28 @@
      
      $db = ConnectDB();
 
-     // Assuming $conn is your database connection
+     // // Assuming $conn is your database connection
 
-     // Get user input (replace this with your actual input source)
-     $userInput = $_POST['Zoek'];
+     // // Get user input (replace this with your actual input source)
+     // $userInput = $_POST['Zoek'];
 
-     // Use prepared statements to prevent SQL injection
-     $stmt = $conn->prepare("SELECT * FROM huizen WHERE StartDatum,  = :userInput");
-     $stmt->bindParam(':userInput', $userInput, PDO::PARAM_STR);
-     $stmt->execute();
+     // // Use prepared statements to prevent SQL injection
+     // $stmt = $conn->prepare("SELECT * FROM huizen WHERE StartDatum,  = :userInput");
+     // $stmt->bindParam(':userInput', $userInput, PDO::PARAM_STR);
+     // $stmt->execute();
 
-     // Fetch the results
-     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+     // // Fetch the results
+     // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-     // Process and display the results
-     foreach ($result as $row) {
-     // Your processing logic here
-     }
+     // // Process and display the results
+     // foreach ($result as $row) {
+     // // Your processing logic here
+     // }
 
      // Close the statement and database connection
      
-     $stmt->closeCursor();
-     $conn = null;
+     // $stmt->closeCursor();
+     // $conn = null;
      
      $sql = "   SELECT biedingen.ID as TKID,
                        StartDatum,
