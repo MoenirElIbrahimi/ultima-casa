@@ -118,6 +118,19 @@
                  LIMIT 1"; // de eerste makelaar van Ultima Casa
      
      $makelaar = $db->query($sql)->fetch();
+
+     $sql = "SELECT * FROM users WHERE user_uid=?;";
+
+     //Create a prepared statement
+     $stmt = mysqli_stmt_init($db);
+
+     //Prepare the prepared statement
+     if (!mysqli_stmt_prepare($stmt, $sql)) {
+          echo "SQL statement failed";
+     } else {
+          //Bind parameters to the placeholder
+          mysqli_stmt_bind_param($stmt, "s");
+     }
      
      echo '
           <!DOCTYPE html>
