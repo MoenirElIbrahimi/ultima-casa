@@ -3,8 +3,8 @@
      
      $db = ConnectDB();
      
-     $relatieid = $_GET['RID'];
-     $id = $_GET['edit'];
+     $relatieid = $_POST['RID'];
+     $id = $_POST['edit'];
      
 
      echo 
@@ -31,7 +31,7 @@
      $record = $db->query($sql)->fetch();
      
      if ($record)
-     {    echo          '<form action="rolupd.php" method="GET">
+     {    echo          '<form action="rolupd.php" method="POST">
                               <div class="form-group">
                                    <label for="Naam">Rol:</label>
                                    <input type="text" class="form-control" value = "' . $record["Naam"] . '"

@@ -4,8 +4,8 @@
      
      $db = ConnectDB();
      
-     $ID = $_GET["wis"]; 
-     $relatieid = $_GET['RID'];
+     $ID = $_POST["wis"]; 
+     $relatieid = $_POST['RID'];
         
      $sql = "   SELECT StatusCode, Status
                   FROM statussen
@@ -37,7 +37,7 @@
                               <label for="Status">Status:</label>
                               <input type="text" class="form-control" value="' . $gegevens["Status"] . '" id="Status" name="Status" readonly>
                          </div>
-                         <form action="statusdel.php" method="GET">
+                         <form action="statusdel.php" method="POST">
                               <div class="form-group">
                                    <button type="submit" class="action-button" id="wis" name="wis" 
                                            value="' . $ID . '" title="Deze status verwijderen.">Status verwijderen

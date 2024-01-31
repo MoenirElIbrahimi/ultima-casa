@@ -4,8 +4,8 @@
      
      $db = ConnectDB();
      
-     $ID = $_GET["wis"]; 
-     $relatieID = $_GET["RID"]; 
+     $ID = $_POST["wis"]; 
+     $relatieID = $_POST["RID"]; 
      echo 
     '<!DOCTYPE html>
      <html lang="nl">

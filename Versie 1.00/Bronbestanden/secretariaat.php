@@ -4,7 +4,7 @@
      
      $db = ConnectDB();
      
-     $relatieid = $_GET['RID'];
+     $relatieid = $_POST['RID'];
      $sql = "   SELECT ID, 
                        Naam, 
                        Email, 

@@ -4,8 +4,8 @@
      
      $db = ConnectDB();
      
-     $huisid = $_GET["huis"];
-     $beheerderid = $_GET["RID"];
+     $huisid = $_POST["huis"];
+     $beheerderid = $_POST["RID"];
      
      $sql = "SELECT CONCAT(Straat, ', ', LEFT(Postcode, 4), ' ', RIGHT(Postcode, 2), '&nbsp;&nbsp;', Plaats) AS Adres, 
                       StartDatum, StatusDatum, Status, huizen.ID as HID
@@ -63,7 +63,7 @@
      }
      
      echo               '</table><br><br>
-                         <form action="archiefdel.php" method="GET">
+                         <form action="archiefdel.php" method="POST">
                               <div class="form-group">
                                    <button type="submit" class="action-button" id="wis" name="wis" 
                                            value="' . $huisid . '" title="Dit huis van de markt halen.">Huis van de markt halen

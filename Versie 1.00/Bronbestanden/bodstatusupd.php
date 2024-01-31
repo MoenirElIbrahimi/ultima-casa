@@ -4,9 +4,9 @@
      
      $db = ConnectDB();
      
-     $biedingenid = $_GET["BID"]; 
-     $statussenid = $_GET["SID"]; 
-     $relatieid = $_GET["RID"]; 
+     $biedingenid = $_POST["BID"]; 
+     $statussenid = $_POST["SID"]; 
+     $relatieid = $_POST["RID"]; 
      $datum = "'" . FormatDatum() . "'";
 
      echo 

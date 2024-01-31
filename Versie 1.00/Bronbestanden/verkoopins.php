@@ -4,10 +4,10 @@
      
      $db = ConnectDB();
      
-     $relatieid = $_GET["RID"]; 
-     $straat = "'" . trim($_GET["Straat"]) . "'";
-     $postcode = "'" . strtoupper(str_replace(' ', '', $_GET["Postcode"])) . "'";
-     $plaats = "'" . trim($_GET["Plaats"]) . "'";
+     $relatieid = $_POST["RID"]; 
+     $straat = "'" . trim($_POST["Straat"]) . "'";
+     $postcode = "'" . strtoupper(str_replace(' ', '', $_POST["Postcode"])) . "'";
+     $plaats = "'" . trim($_POST["Plaats"]) . "'";
      
      echo 
     '<!DOCTYPE html>
@@ -35,10 +35,10 @@
      if ($db->query($sql) == true)
      {    $huisid = $db->lastInsertId();
           $sqlarr = array();
-          foreach ($_GET as $arg=>$val) 
+          foreach ($_POST as $arg=>$val) 
           {    $cr = explode("_", $arg);
                if (count($cr) == 2)
-               {    if (($cr[0] == "CR") && (!empty($_GET[$arg])))
+               {    if (($cr[0] == "CR") && (!empty($_POST[$arg])))
                     {    $sqlarr[] = "(" . $val . "," . $huisid . "," . $cr[1] . ")";
                     }
                }

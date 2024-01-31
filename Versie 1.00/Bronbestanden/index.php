@@ -1,6 +1,6 @@
 <?php
 $noaccount = "";
-if (isset($_GET["NOAccount"])) {
+if (isset($_POST["NOAccount"])) {
     $noaccount = "<h4 class='accent'><br>Onjuiste E-mail/Wachtwoord combinatie.<br><br></h4>";
 }
 ?>

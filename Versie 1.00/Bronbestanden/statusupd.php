@@ -4,8 +4,8 @@
      
      $db = ConnectDB();
      
-     $id = $_GET["ID"]; 
-     $relatieID = $_GET["RID"]; 
+     $id = $_POST["ID"]; 
+     $relatieID = $_POST["RID"]; 
      
      echo 
     '<!DOCTYPE html>
@@ -25,8 +25,8 @@
                          <h3>Status wijzigen</h3>';
      
      $sql = "   UPDATE statussen
-                   SET Status = '" . $_GET['Status'] . "',
-                       StatusCode = '" . $_GET['StatusCode'] . "' 
+                   SET Status = '" . $_POST['Status'] . "',
+                       StatusCode = '" . $_POST['StatusCode'] . "' 
                  WHERE ID = $id";
 
      if ($db->query($sql) == true) 

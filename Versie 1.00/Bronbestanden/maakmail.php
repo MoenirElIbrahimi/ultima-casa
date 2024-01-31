@@ -3,9 +3,9 @@ include_once("functions.php");
 
 $db = ConnectDB();
 
-$fromid = $_GET["FID"];
-$toid = $_GET["TID"];
-$relatieid = $_GET["RID"];
+$fromid = $_POST["FID"];
+$toid = $_POST["TID"];
+$relatieid = $_POST["RID"];
 
 $sql = "SELECT Naam, Email
            FROM relaties

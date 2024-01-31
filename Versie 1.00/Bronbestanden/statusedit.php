@@ -3,8 +3,8 @@
      
      $db = ConnectDB();
      
-     $relatieid = $_GET['RID'];
-     $id = $_GET['edit'];
+     $relatieid = $_POST['RID'];
+     $id = $_POST['edit'];
      
 
      echo 
@@ -31,7 +31,7 @@
      $record = $db->query($sql)->fetch();
      
      if ($record)
-     {    echo          ' <form action="statusupd.php" method="GET">
+     {    echo          ' <form action="statusupd.php" method="POST">
                               <div class="form-group">
                                    <label for="StatusCode">Statuscode:</label>
                                    <input type="number" min=0 max=127 class="form-control" value = "' . $record["StatusCode"] . '"
