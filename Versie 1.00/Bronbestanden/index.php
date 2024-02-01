@@ -1,4 +1,5 @@
 <?php
+
 $noaccount = "";
 if (isset($_POST["NOAccount"])) {
     $noaccount = "<h4 class='accent'><br>Onjuiste E-mail/Wachtwoord combinatie.<br><br></h4>";
@@ -45,3 +46,4 @@ if (isset($_POST["NOAccount"])) {
     </div>
 </body>
 </html>
+?
