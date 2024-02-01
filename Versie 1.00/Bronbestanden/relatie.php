@@ -34,45 +34,42 @@
      };
      
      $db = ConnectDB();
-
-     // // Assuming $conn is your database connection
-
-     // // Get user input (replace this with your actual input source)
-     // $userInput = $_POST['Zoek'];
-
-     // // Use prepared statements to prevent SQL injection
-     // $stmt = $conn->prepare("SELECT * FROM huizen WHERE StartDatum,  = :userInput");
-     // $stmt->bindParam(':userInput', $userInput, PDO::PARAM_STR);
-     // $stmt->execute();
-
-     // // Fetch the results
-     // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-     // // Process and display the results
-     // foreach ($result as $row) {
-     // // Your processing logic here
-     // }
-
-     // Close the statement and database connection
      
-     // $stmt->closeCursor();
-     // $conn = null;
-     
-     $sql = "   SELECT biedingen.ID as TKID,
-                       StartDatum,
-                       IF(Bod, Datum, '&nbsp;') AS Datum,
-                       CONCAT('&euro; ', Bod) AS Bod,
-                       Straat,
-                       CONCAT(LEFT(Postcode, 4), ' ', RIGHT(Postcode, 2), ', ', Plaats) as Plaats,
-                       Status, 
-                       biedingen.FKhuizenID AS HID,
-                       huizen.FKRelatiesID as RID
-                  FROM biedingen
-             LEFT JOIN relaties ON relaties.ID = biedingen.FKRelatiesID 
-             LEFT JOIN huizen on huizen.ID = biedingen.FKhuizenID
-             LEFT JOIN statussen ON statussen.ID = biedingen.FKstatussenID
-                 WHERE " . $filter . "
-             ORDER BY Datum";
+    //  $sql = "   SELECT biedingen.ID as TKID,
+    //                    StartDatum,
+    //                    IF(Bod, Datum, '&nbsp;') AS Datum,
+    //                    CONCAT('&euro; ', Bod) AS Bod,
+    //                    Straat,
+    //                    CONCAT(LEFT(Postcode, 4), ' ', RIGHT(Postcode, 2), ', ', Plaats) as Plaats,
+    //                    Status, 
+    //                    biedingen.FKhuizenID AS HID,
+    //                    huizen.FKRelatiesID as RID
+    //               FROM biedingen
+    //          LEFT JOIN relaties ON relaties.ID = biedingen.FKRelatiesID 
+    //          LEFT JOIN huizen on huizen.ID = biedingen.FKhuizenID
+    //          LEFT JOIN statussen ON statussen.ID = biedingen.FKstatussenID
+    //              WHERE " . $filter . "
+    //          ORDER BY Datum";
+
+    $sql = "SELECT biedingen.ID as TKID,
+                StartDatum,
+                IF(Bod, Datum, '&nbsp;') AS Datum,
+                CONCAT('&euro; ', Bod) AS Bod,
+                Straat,
+                CONCAT(LEFT(Postcode, 4), ' ', RIGHT(Postcode, 2), ', ', Plaats) as Plaats,
+                Status, 
+                biedingen.FKhuizenID AS HID,
+                huizen.FKRelatiesID as RID
+        FROM biedingen
+        LEFT JOIN relaties ON relaties.ID = biedingen.FKRelatiesID 
+        LEFT JOIN huizen on huizen.ID = biedingen.FKhuizenID
+        LEFT JOIN statussen ON statussen.ID = biedingen.FKstatussenID
+        WHERE " . $filter . "
+        ORDER BY Datum";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $kopen = $stmt->fetchAll();
              
      $kopen = $db->query($sql)->fetchAll();
      
@@ -90,6 +87,11 @@
              WHERE relaties.ID = $relatieid
              GROUP BY huizen.ID
              ORDER BY StartDatum";
+    
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':relatieid', $relatieid, PDO::PARAM_INT);
+    $stmt->execute();
+    $criteria = $stmt->fetchAll();
              
      $verkopen = $db->query($sql)->fetchAll();
      
@@ -99,7 +101,7 @@
              LEFT JOIN criteria ON criteria.ID = FKcriteriaID
                  WHERE FKrelatiesID = $relatieid";
      
-     $criteria = $db->query($sql)->fetchAll();
+    $criteria = $db->query($sql)->fetchAll();
      
      $sql = "   SELECT ID, 
                        Naam, 
@@ -108,6 +110,11 @@
                        Wachtwoord
                   FROM relaties
                  WHERE ID = " . $relatieid;
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':relatieid', $relatieid, PDO::PARAM_INT);
+    $stmt->execute();
+    $gegevens = $stmt->fetch();
      
      $gegevens = $db->query($sql)->fetch();
      
@@ -116,22 +123,12 @@
              LEFT JOIN rollen ON rollen.ID = relaties.FKrollenID
                  WHERE Waarde BETWEEN 30 AND 39 
                  LIMIT 1"; // de eerste makelaar van Ultima Casa
+
+    $stmt = $db->query($sql);
+    $makelaar = $stmt->fetch();
      
      $makelaar = $db->query($sql)->fetch();
 
-     $sql = "SELECT * FROM users WHERE user_uid=?;";
-
-     //Create a prepared statement
-     $stmt = mysqli_stmt_init($db);
-
-     //Prepare the prepared statement
-     if (!mysqli_stmt_prepare($stmt, $sql)) {
-          echo "SQL statement failed";
-     } else {
-          //Bind parameters to the placeholder
-          mysqli_stmt_bind_param($stmt, "s");
-     }
-     
      echo '
           <!DOCTYPE html>
           <html lang="nl">
@@ -388,4 +385,6 @@
                </div>
           </body>
      </html>';
+
+     $db = null;
 ?>
