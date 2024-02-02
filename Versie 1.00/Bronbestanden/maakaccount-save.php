@@ -37,5 +37,5 @@ if ($db->query($sql) == true) {
     $result .= 'Fout bij het bewaren van uw gegevens.<br><br>' . $sql;
 }
 echo $result . '<br><br>
-      <button class="action-button"><a href="index.html">Ok</a></button>';
+      <button class="action-button"><a href="index.php">Ok</a></button>';
 ?>
