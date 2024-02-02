@@ -1,11 +1,11 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $ID = $_GET["ID"]; 
-     $relatieid = $_GET['RID'];
+     $ID = $_POST["ID"]; 
+     $relatieid = $_SESSION["rolID"];
      
      $sql = "   SELECT Straat, CONCAT(LEFT(Postcode, 4), ' ', RIGHT(Postcode, 2)) AS Postcode, Plaats, 
                        DATE_FORMAT(Gewijzigd, '%Y-%m-%d') AS Gewijzigd
@@ -47,7 +47,7 @@
                                    <label for="Gewijzigd">Datum gewijzigd:</label>
                                    <input type="text" class="form-control" value="' . $gegevens["Gewijzigd"] . '" id="Gewijzigd" name="Straat" Gewijzigd>
                               </div>
-                              <form action="adresdel.php" method="GET">
+                              <form action="adresdel.php" method="POST">
                                    <div class="form-group">
                                         <button type="submit" class="action-button" id="wis" name="wis" 
                                                 value="' . $ID . '" title="Dit adres verwijderen.">Adres verwijderen

@@ -1,14 +1,14 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $relatieid = $_GET["RID"]; 
-     $naam = "'" . trim($_GET["Naam"]) . "'";
-     $omschrijving = "'" . trim($_GET["Omschrijving"]) . "'";
-     $waarde = $_GET["Waarde"];
-     $landingspagina = "'" . trim($_GET["Landingspagina"]) . "'";
+     $relatieid = $_SESSION["rolID"]; 
+     $naam = "'" . trim($_POST["Naam"]) . "'";
+     $omschrijving = "'" . trim($_POST["Omschrijving"]) . "'";
+     $waarde = $_POST["Waarde"];
+     $landingspagina = "'" . trim($_POST["Landingspagina"]) . "'";
      echo 
     '<!DOCTYPE html>
      <html lang="nl">

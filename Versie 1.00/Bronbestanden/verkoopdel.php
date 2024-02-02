@@ -1,12 +1,12 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $huizenID = $_GET["wis"]; 
-     $relatiesID = $_GET["RID"]; 
-     $adressenID = $_GET["AID"]; 
+     $huizenID = $_POST["wis"]; 
+     $relatiesID = $_SESSION["rolID"]; 
+     $adressenID = $_POST["AID"]; 
      echo 
     '<!DOCTYPE html>
      <html lang="nl">

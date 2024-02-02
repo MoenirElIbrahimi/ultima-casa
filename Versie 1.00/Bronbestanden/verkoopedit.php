@@ -1,10 +1,10 @@
 <?php
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $huizenid = $_GET['HID'];
-     $relatieid = $_GET['RID'];
+     $huizenid = $_POST['HID'];
+     $relatieid = $_SESSION["rolID"];
      
      $sql = "SELECT ID as AID, StartDatum, FKrelatiesID, Straat, Postcode, Plaats
                FROM huizen
@@ -42,7 +42,7 @@
           <body>
                <div class="container">
                     <h3 class="cell-center bbottom">Huis te koop wijzigen</h3>
-                    <form action="verkoopupd.php" method="GET">
+                    <form action="verkoopupd.php" method="POST">
                          <input type="hidden" value="' . $huis["AID"] . '" id="AID" name="AID">
                          <input type="hidden" value="' . $huizenid . '" id="HID" name="HID">
                          <div class="row">

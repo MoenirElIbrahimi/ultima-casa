@@ -1,12 +1,12 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $biedingenid = $_GET["BID"]; 
-     $statussenid = $_GET["SID"]; 
-     $relatieid = $_GET["RID"]; 
+     $biedingenid = $_POST["BID"]; 
+     $statussenid = $_POST["SID"]; 
+     $relatieid = $_SESSION["rolID"]; 
      $datum = "'" . FormatDatum() . "'";
 
      echo 

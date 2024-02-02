@@ -1,9 +1,9 @@
 <?php
 include_once("functions.php");
-
+session_start();
 $db = ConnectDB();
 
-$relatieID = $_POST["RID"];
+$relatieID = $_SESSION["rolID"];
 
 $CrVanTem = "NULL";
 $Van = "NULL";

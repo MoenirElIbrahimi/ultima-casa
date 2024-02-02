@@ -1,10 +1,10 @@
 <?php
 include_once("functions.php");
-
+session_start();
 $db = ConnectDB();
 
 $ID = $_POST["edit"];
-$relatieid = $_POST["RID"];
+$relatieid = $_SESSION["rolID"];
 
 $sql = "SELECT mijncriteria.ID as CID, Criterium, Van, Tem, Type
            FROM mijncriteria

@@ -1,9 +1,9 @@
 <?php
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $relatieid = $_GET['RID'];
+     $relatieid = $_SESSION["rolID"];
      
      $sql = "SELECT ID, Criterium, Type
                FROM criteria
@@ -34,7 +34,7 @@
           <body>
                <div class="container">
                     <h3 class="cell-center bbottom">Huis te koop aanbieden</h3>
-                    <form action="verkoopins.php" method="GET">
+                    <form action="verkoopins.php" method="POST">
                          <div class="row">
                               <div class="col-sm-4 col-md-4 col-lg-4">
                                    <div class="form-group">

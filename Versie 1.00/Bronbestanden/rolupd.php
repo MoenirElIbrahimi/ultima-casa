@@ -1,11 +1,11 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $id = $_GET["ID"]; 
-     $relatieID = $_GET["RID"]; 
+     $id = $_POST["ID"]; 
+     $relatieID = $$_SESSION["rolID"]; 
      
      echo 
     '<!DOCTYPE html>
@@ -25,10 +25,10 @@
                          <h3>Rol wijzigen</h3>';
      
      $sql = "   UPDATE rollen
-                   SET Naam = '" . $_GET['Naam'] . "', 
-                       Omschrijving = '" . $_GET['Omschrijving'] . "',
-                       Landingspagina = '" . $_GET['Landingspagina'] . "',
-                       Waarde = '" . $_GET['Waarde'] . "'
+                   SET Naam = '" . $_POST['Naam'] . "', 
+                       Omschrijving = '" . $_POST['Omschrijving'] . "',
+                       Landingspagina = '" . $_POST['Landingspagina'] . "',
+                       Waarde = '" . $_POST['Waarde'] . "'
                  WHERE ID = $id";
 
      if ($db->query($sql) == true) 
