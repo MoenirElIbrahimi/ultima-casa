@@ -8,7 +8,6 @@ $FKrelatiesID = $_SESSION["rolID"];
 
 $datum = "'" . FormatDatum() . "'";
 $sql = "INSERT INTO biedingen (FKrelatiesID, FKhuizenID, StatusDatum) VALUES ($FKrelatiesID, $FKhuizenID, $datum)";
-
 ?>
 
 <!DOCTYPE html>

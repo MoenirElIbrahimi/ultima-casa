@@ -13,7 +13,6 @@ $sql = "SELECT ID,
          WHERE ID = :relatieid";
 
 $gegevens = $db->query($sql, ['relatieid' => $relatieid])->fetch();
-
 ?>
 
 <!DOCTYPE html>

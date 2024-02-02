@@ -19,6 +19,7 @@ if (isset($_POST["Email"]) && isset($_POST["Wachtwoord"])) {
 
     $inlog = $db->query($sql)->fetch();
 
+
     $_SESSION["rolID"] = $inlog['RID'];
 
     $redirect_url = 'index.php?NOAccount';

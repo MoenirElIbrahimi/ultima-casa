@@ -38,21 +38,36 @@
 
      // Assuming $db is your database connection
 
-     // Get user input (replace this with your actual input source)
-     $userInput = $_POST['Zoek'];
+$filtered = 0;
+$filter = "relaties.ID = " . $relatieid . " AND (StatusCode < 100)";
+$datum = "";
+$bod = "";
+$zoek = "";
+if (isset($_POST['Datum']) && !empty($_POST['Datum'])) {
+    $datum = $_POST['Datum'];
+    $filtered = 1;
+};
+if (isset($_POST['Bod']) && !empty($_POST['Bod'])) {
+    $bod = $_POST['Bod'];
+    $filtered = 1;
+};
+if (isset($_POST['Zoek']) && !empty($_POST['Zoek'])) {
+    $zoek = $_POST['Zoek'];
+    $filtered = 1;
+};
 
      // Use prepared statements to prevent SQL injection
      $stmt = $db->prepare("SELECT * FROM huizen WHERE StartDatum,  = :userInput");
      $stmt->bindParam(':userInput', $userInput, PDO::PARAM_STR);
      $stmt->execute();
 
-     // Fetch the results
-     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if (!empty($bod)) {
+    $filter .= " AND Bod > " . $bod;
+};
 
-     // Process and display the results
-     foreach ($result as $row) {
-     // Your processing logic here
-     }
+if (!empty($zoek)) {
+    $filter .= " AND CONCAT_WS('', StartDatum, Datum, Bod, Status, Straat, Postcode, Plaats) LIKE '%" . $zoek . "%'";
+};
 
      // Close the statement and database connection
      
@@ -334,7 +349,6 @@ $sql = "SELECT biedingen.ID as TKID,
         LEFT JOIN statussen ON statussen.ID = biedingen.FKstatussenID
             WHERE " . $filter . "
         ORDER BY Datum";
-
 $kopen = $db->query($sql)->fetchAll();
 
 $sql = "SELECT huizen.ID as HID,

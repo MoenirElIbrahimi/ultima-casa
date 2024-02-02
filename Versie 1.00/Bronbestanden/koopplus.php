@@ -7,7 +7,6 @@ $relatieid = $_SESSION["rolID"];
 
 $filter = 0;
 $filterids = "";
-
 if (isset($_POST['filter'])) {
     $filter = 1;
     $sql = "SELECT FKhuizenID AS huizenID
