@@ -33,7 +33,17 @@
      };
      
      if (!empty($zoek))
-     {    $filter .= " AND CONCAT_WS('', StartDatum, Datum, Bod, Status, Straat, Postcode, Plaats) LIKE '%" . $zoek . "%'";
+     {    
+          // Definieer een reguliere expressie om speciale tekens te controleren
+          $patroon = '/[!@#$%^&*(),.?":{}|<>]/';
+
+          // Gebruik de preg_match-functie om te controleren of het patroon voorkomt in de input
+          if (preg_match($patroon, $zoek)) {
+               echo "<script>alert('er mogen geen speciale characters gebruikt worden.');</script>";
+          } else {
+               $filter .= " AND CONCAT_WS('', StartDatum, Datum, Bod, Status, Straat, Postcode, Plaats) LIKE '%" . $zoek . "%'";
+          }
+          
      };
      
      $db = ConnectDB();

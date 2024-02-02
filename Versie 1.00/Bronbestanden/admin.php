@@ -1,7 +1,6 @@
 <?php
      session_start();
      include_once("functions.php");
-     session_start();
 
      $relatieid = $_SESSION['rolID'];
      if (!isset($relatieid)) {
