@@ -1,13 +1,12 @@
 <?php
 include_once("functions.php");
-
+session_start();
 $db = ConnectDB();
 
-$relatieid = $_POST['RID'];
+$relatieid = $_SESSION["rolID"];
 
 $filter = 0;
 $filterids = "";
-
 if (isset($_POST['filter'])) {
     $filter = 1;
     $sql = "SELECT FKhuizenID AS huizenID

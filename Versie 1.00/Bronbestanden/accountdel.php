@@ -4,7 +4,7 @@
      
      $db = ConnectDB();
      
-     $ID = $_GET["del"]; 
+     $ID = $_POST["del"]; 
      echo 
     '<!DOCTYPE html>
      <html lang="nl">

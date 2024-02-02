@@ -30,7 +30,7 @@ function ActionButton($caption, $action, $actionvalue = NULL, $title = NULL, $no
 function GetAction()
 {    $action = NULL;
      foreach($_POST as $name => $val) 
-     {    if (!is_array($post))
+     {    if (!is_array($_POST))
           {    $names = explode("_", $name);
                if ($names[0] == "button")
                {    if (count($names) > 1)

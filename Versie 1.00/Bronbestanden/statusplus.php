@@ -1,7 +1,7 @@
 <?php
      include_once("functions.php");
-     
-     $relatieid = $_GET['RID'];
+     session_start();
+     $relatieid = $_SESSION["rolID"];
      
      echo 
     '<!DOCTYPE html>
@@ -19,7 +19,7 @@
                <div class="container">
                     <div class="col-sm-5 col-md-7 col-lg-5 col-sm-offset-4 col-md-offset-3 col-lg-offset-4">
                          <h3>Een status toevoegen</h3>
-                         <form action="statusins.php" method="GET">
+                         <form action="statusins.php" method="POST">
                               <div class="form-group">
                                    <label for="Statuscode">Statuscode:</label>
                                    <input type="number" class="form-control" 

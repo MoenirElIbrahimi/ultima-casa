@@ -1,9 +1,9 @@
 <?php
      include_once("functions.php");
-     
+
      $db = ConnectDB();
      
-     $huizenid = $_GET['wis'];
+     $huizenid = $_POST['wis'];
      $sql = "   SELECT huizen.ID AS HID,
                        StartDatum,
                        CONCAT(Straat, ', ', LEFT(Postcode, 4), ' ', RIGHT(Postcode, 2), '&nbsp;&nbsp;', Plaats) as Adres,
@@ -56,7 +56,7 @@
                                    <label for="Status">Status:</label>
                                    <input type="text" class="form-control" value="' . $huis["Status"] . '" id="Status" name="Status" readonly>
                               </div>
-                         <form action="verkoopdel.php" method="GET">
+                         <form action="verkoopdel.php" method="POST">
                               <div class="form-group">
                                    <button type="submit" class="action-button" id="wis" name="wis" 
                                            value="' . $huizenid . '" title="De verkoop van dit huis intrekken.">Intrekken

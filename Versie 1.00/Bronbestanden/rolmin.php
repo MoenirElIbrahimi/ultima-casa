@@ -1,11 +1,11 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $ID = $_GET["wis"]; 
-     $relatieid = $_GET['RID'];
+     $ID = $_POST["wis"]; 
+     $relatieid = $_SESSION["rolID"];
          
      $sql = "   SELECT Naam, Omschrijving, Waarde, Landingspagina
                   FROM rollen
@@ -46,7 +46,7 @@
                               <input type="text" class="form-control" value="' . $gegevens["Landingspagina"] . '" 
                                      id="Landingspagina" name="Landingspagina" readonly>
                          </div>
-                         <form action="roldel.php" method="GET">
+                         <form action="roldel.php" method="POST">
                               <div class="form-group">
                                    <button type="submit" class="action-button" id="wis" name="wis" 
                                            value="' . $ID . '" title="Deze rol verwijderen.">Rol verwijderen

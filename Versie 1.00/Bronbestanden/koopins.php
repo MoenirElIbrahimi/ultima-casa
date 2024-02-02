@@ -1,14 +1,13 @@
 <?php
 include_once("functions.php");
-
+session_start();
 $db = ConnectDB();
 
 $FKhuizenID = $_POST["plus"];
-$FKrelatiesID = $_POST["RID"];
+$FKrelatiesID = $_SESSION["rolID"];
 
 $datum = "'" . FormatDatum() . "'";
 $sql = "INSERT INTO biedingen (FKrelatiesID, FKhuizenID, StatusDatum) VALUES ($FKrelatiesID, $FKhuizenID, $datum)";
-
 ?>
 
 <!DOCTYPE html>

@@ -1,12 +1,12 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $relatieid = $_GET["RID"]; 
-     $status = "'" . trim($_GET["Status"]) . "'";
-     $statuscode = $_GET["Statuscode"];
+     $relatieid = $_SESSION["rolID"]; 
+     $status = "'" . trim($_POST["Status"]) . "'";
+     $statuscode = $_POST["Statuscode"];
      echo 
     '<!DOCTYPE html>
      <html lang="nl">

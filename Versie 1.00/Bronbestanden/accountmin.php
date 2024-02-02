@@ -4,7 +4,7 @@
      
      $db = ConnectDB();
      
-     $ID = $_GET["ID"]; 
+     $ID = $_POST["ID"]; 
 
      $sql = "   SELECT ID, 
                        Naam, 
@@ -49,7 +49,7 @@
                               <input type="tel" class="form-control" id="Telefoon" name="Telefoon" 
                                      value="' . $gegevens["Telefoon"] . '" readonly>
                          </div>
-                         <form action="accountdel.php" method="GET">
+                         <form action="accountdel.php" method="POST">
                               <div class="form-group">
                                    <button type="submit" class="action-button" id="del" name="del" 
                                            value="' . $ID . '">Mijn account definitief verwijderen

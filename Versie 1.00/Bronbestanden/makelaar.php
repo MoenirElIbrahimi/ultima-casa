@@ -1,9 +1,9 @@
 <?php
 include_once("functions.php");
-
+session_start();
 $db = ConnectDB();
 
-$relatieid = $_POST['RID'];
+$relatieid = $_SESSION["rolID"];
 $sql = "SELECT ID, 
                Naam, 
                Email, 
@@ -13,7 +13,6 @@ $sql = "SELECT ID,
          WHERE ID = :relatieid";
 
 $gegevens = $db->query($sql, ['relatieid' => $relatieid])->fetch();
-
 ?>
 
 <!DOCTYPE html>

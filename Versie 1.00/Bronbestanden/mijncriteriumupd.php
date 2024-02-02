@@ -1,10 +1,10 @@
 <?php
 include_once("functions.php");
-
+session_start();
 $db = ConnectDB();
 
 $id = $_POST["upd"];
-$relatieID = $_POST["RID"];
+$relatieID = $_SESSION["rolID"];
 $van = "NULL";
 if (isset($_POST['Van'])) {
     $van = $_POST['Van'];

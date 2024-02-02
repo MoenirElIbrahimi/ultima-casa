@@ -1,10 +1,10 @@
 <?php
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $id = $_GET["ID"]; 
-     $relatieID = $_GET["upd"]; 
+     $id = $_POST["ID"]; 
+     $relatieID = $_POST["upd"]; 
      
      echo 
     '<!DOCTYPE html>
@@ -24,27 +24,27 @@
                          <h3>Mijn account wijzigen</h3>';
      
      $sql = "UPDATE relaties 
-                SET Naam = '" . $_GET['Naam'] . "',
-                    Email = '" . $_GET['Email'] . "',
-                    Telefoon = '" . $_GET['Telefoon'] . "' ";
-     if ($_GET["Wachtwoord"] == "")
+                SET Naam = '" . $_POST['Naam'] . "',
+                    Email = '" . $_POST['Email'] . "',
+                    Telefoon = '" . $_POST['Telefoon'] . "' ";
+     if ($_POST["Wachtwoord"] == "")
      {    $wachtwoord = "Ongewijzigd";
      }
      else
-     {    $wachtwoord = $_GET["Wachtwoord"];
+     {    $wachtwoord = $_POST["Wachtwoord"];
           $sql .= 
                  ", Wachtwoord = '" . md5($wachtwoord) . "'";
      } 
      $sql .= "WHERE ID = $relatieID";
      
      if ($db->query($sql) == true) 
-     {     if (StuurMail($_GET['Email'], 
+     {     if (StuurMail($_POST['Email'], 
                         "Wijziging gegevens Ultima Casa account", 
                         "Uw gegevens zijn als volgt gewijzigd:
                         
-               Naam: " . $_GET["Naam"] . "
-               E-mailadres: " . $_GET["Email"] . "
-               Telefoon: " . $_GET["Telefoon"] . "
+               Naam: " . $_POST["Naam"] . "
+               E-mailadres: " . $_POST["Email"] . "
+               Telefoon: " . $_POST["Telefoon"] . "
                Wachtwoord: " . $wachtwoord . "
                
                Bewaar deze gegevens goed!

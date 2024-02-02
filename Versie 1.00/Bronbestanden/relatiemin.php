@@ -1,10 +1,10 @@
 <?php
 include_once("functions.php");
-
+session_start();
 $db = ConnectDB();
 
 $ID = $_POST["ID"];
-$relatieid = $_POST["RID"];
+$relatieid = $_SESSION["rolID"];
 
 $sql = "SELECT Naam, Email, Telefoon, DATE_FORMAT(Gewijzigd, '%Y-%m-%d') AS Gewijzigd
         FROM relaties

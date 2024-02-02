@@ -1,6 +1,5 @@
 <?php
 include_once("functions.php");
-
 $db = ConnectDB();
 
 $naam = $_POST['Naam'];
