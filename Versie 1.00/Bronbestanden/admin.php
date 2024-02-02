@@ -5,8 +5,8 @@
      $relatieid = $_SESSION['rolID'];
      if (!isset($relatieid)) {
           echo "niet ingelogd";
-          echo $_SESSION['rolID'];
-          //header("Location: index.php");
+          //echo $_SESSION['rolID'];
+          header("Location: index.php");
      }
 
      $db = ConnectDB();
