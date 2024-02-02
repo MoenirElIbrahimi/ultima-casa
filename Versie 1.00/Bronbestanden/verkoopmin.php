@@ -1,6 +1,6 @@
 <?php
      include_once("functions.php");
-     
+
      $db = ConnectDB();
      
      $huizenid = $_POST['wis'];

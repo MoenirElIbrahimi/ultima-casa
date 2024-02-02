@@ -1,10 +1,10 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $relatieid = $_POST["RID"]; 
+     $relatieid = $_SESSION["rolID"]; 
      $status = "'" . trim($_POST["Status"]) . "'";
      $statuscode = $_POST["Statuscode"];
      echo 

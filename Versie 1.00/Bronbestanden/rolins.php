@@ -1,10 +1,10 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $relatieid = $_POST["RID"]; 
+     $relatieid = $_SESSION["rolID"]; 
      $naam = "'" . trim($_POST["Naam"]) . "'";
      $omschrijving = "'" . trim($_POST["Omschrijving"]) . "'";
      $waarde = $_POST["Waarde"];

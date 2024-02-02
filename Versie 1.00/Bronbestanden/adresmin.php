@@ -1,11 +1,11 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
      $ID = $_POST["ID"]; 
-     $relatieid = $_POST['RID'];
+     $relatieid = $_SESSION["rolID"];
      
      $sql = "   SELECT Straat, CONCAT(LEFT(Postcode, 4), ' ', RIGHT(Postcode, 2)) AS Postcode, Plaats, 
                        DATE_FORMAT(Gewijzigd, '%Y-%m-%d') AS Gewijzigd

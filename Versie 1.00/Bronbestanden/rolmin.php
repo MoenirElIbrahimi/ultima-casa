@@ -1,11 +1,11 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
      $ID = $_POST["wis"]; 
-     $relatieid = $_POST['RID'];
+     $relatieid = $_SESSION["rolID"];
          
      $sql = "   SELECT Naam, Omschrijving, Waarde, Landingspagina
                   FROM rollen

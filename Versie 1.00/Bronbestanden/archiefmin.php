@@ -1,11 +1,11 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
      $huisid = $_POST["huis"];
-     $beheerderid = $_POST["RID"];
+     $beheerderid = $_SESSION["rolID"];
      
      $sql = "SELECT CONCAT(Straat, ', ', LEFT(Postcode, 4), ' ', RIGHT(Postcode, 2), '&nbsp;&nbsp;', Plaats) AS Adres, 
                       StartDatum, StatusDatum, Status, huizen.ID as HID

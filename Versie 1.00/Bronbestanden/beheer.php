@@ -1,10 +1,10 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $relatieid = $_POST['RID'];
+     $relatieid = $_SESSION["rolID"];
      
      echo 
     '<!DOCTYPE html>

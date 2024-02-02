@@ -1,24 +1,24 @@
 <?php
 
      include_once("functions.php");
-     
-     $relatieid = $_GET['RID'];
+     session_start();
+     $relatieid = $_SESSION["rolID"];
      
      $filtered = 0;
      $filter = "relaties.ID = " . $relatieid . " AND (StatusCode < 100)";
      $datum = "";
      $bod = "";
      $zoek = "";
-     if (isset($_GET['Datum']) && !empty($_GET['Datum']))
-     {    $datum = $_GET['Datum'];
+     if (isset($_POST['Datum']) && !empty($_POST['Datum']))
+     {    $datum = $_POST['Datum'];
           $filtered = 1;
      };
-     if (isset($_GET['Bod']) && !empty($_GET['Bod']))
-     {    $bod = $_GET['Bod'];
+     if (isset($_POST['Bod']) && !empty($_POST['Bod']))
+     {    $bod = $_POST['Bod'];
           $filtered = 1;
      };
-     if (isset($_GET['Zoek']) && !empty($_GET['Zoek']))
-     {    $zoek = $_GET['Zoek'];
+     if (isset($_POST['Zoek']) && !empty($_POST['Zoek']))
+     {    $zoek = $_POST['Zoek'];
           $filtered = 1;
      };
      
@@ -36,13 +36,13 @@
      
      $db = ConnectDB();
 
-     // Assuming $conn is your database connection
+     // Assuming $db is your database connection
 
      // Get user input (replace this with your actual input source)
      $userInput = $_POST['Zoek'];
 
      // Use prepared statements to prevent SQL injection
-     $stmt = $conn->prepare("SELECT * FROM huizen WHERE StartDatum,  = :userInput");
+     $stmt = $db->prepare("SELECT * FROM huizen WHERE StartDatum,  = :userInput");
      $stmt->bindParam(':userInput', $userInput, PDO::PARAM_STR);
      $stmt->execute();
 
@@ -57,7 +57,7 @@
      // Close the statement and database connection
      
      $stmt->closeCursor();
-     $conn = null;
+     $db = null;
      
      $sql = "   SELECT biedingen.ID as TKID,
                        StartDatum,
@@ -285,7 +285,7 @@
                                         </td>
 
 
-$relatieid = $_POST['RID'];
+$relatieid = $_SESSION["rolID"];
 
 $filtered = 0;
 $filter = "relaties.ID = " . $relatieid . " AND (StatusCode < 100)";

@@ -1,11 +1,11 @@
 <?php
 include_once("functions.php");
-
+session_start();
 $db = ConnectDB();
 
 $fromid = $_POST["FID"];
 $toid = $_POST["TID"];
-$relatieid = $_POST["RID"];
+$relatieid = $_SESSION["rolID"];
 
 $sql = "SELECT Naam, Email
            FROM relaties

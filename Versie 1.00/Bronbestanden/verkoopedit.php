@@ -1,10 +1,10 @@
 <?php
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
      $huizenid = $_POST['HID'];
-     $relatieid = $_POST['RID'];
+     $relatieid = $_SESSION["rolID"];
      
      $sql = "SELECT ID as AID, StartDatum, FKrelatiesID, Straat, Postcode, Plaats
                FROM huizen

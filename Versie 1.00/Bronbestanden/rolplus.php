@@ -1,7 +1,7 @@
 <?php
      include_once("functions.php");
-     
-     $relatieid = $_POST['RID'];
+     session_start();
+     $relatieid = $_SESSION["rolID"];
      
      echo 
     '<!DOCTYPE html>

@@ -1,6 +1,6 @@
 <?php
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
      $id = $_POST["ID"]; 

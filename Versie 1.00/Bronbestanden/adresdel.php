@@ -1,11 +1,11 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
      $huisID = $_POST["wis"]; 
-     $relatieID = $_POST["RID"]; 
+     $relatieID = $_SESSION["rolID"]; 
      echo 
     '<!DOCTYPE html>
      <html lang="nl">

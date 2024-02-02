@@ -1,10 +1,10 @@
 <?php
 
      include_once("functions.php");
-     
+     session_start();
      $db = ConnectDB();
      
-     $relatieid = $_POST["RID"]; 
+     $relatieid = $_SESSION["rolID"]; 
      $straat = "'" . trim($_POST["Straat"]) . "'";
      $postcode = "'" . strtoupper(str_replace(' ', '', $_POST["Postcode"])) . "'";
      $plaats = "'" . trim($_POST["Plaats"]) . "'";
